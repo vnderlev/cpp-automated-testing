@@ -5,8 +5,12 @@ FetchContent_Declare(
   GIT_TAG v2.9.1)
 FetchContent_MakeAvailable(catch)
 
-# Tests need to be added as executables first
 add_executable(romanNumsTests romanNumsTests.cpp)
 target_compile_features(romanNumsTests PRIVATE cxx_std_17)
 target_link_libraries(romanNumsTests PRIVATE RomanNumeral Catch2::Catch2)
-add_test(NAME run_romanNumTests COMMAND romanNumsTests) # Command can be a target
+add_test(NAME run_romanNumTests COMMAND romanNumsTests)
+
+add_executable(leapYearsTests leapYearsTests.cpp)
+target_compile_features(leapYearsTests PRIVATE cxx_std_17)
+target_link_libraries(leapYearsTests PRIVATE LeapYear Catch2::Catch2)
+add_test(NAME run_leapYearsTests COMMAND leapYearsTests)

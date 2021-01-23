@@ -4,6 +4,7 @@
 #include <string>
 #include <ctype.h>
 #include <regex>
+#include <unordered_map>
 
 using namespace std;
 
@@ -28,43 +29,40 @@ RomanNumeral::RomanNumeral(string value) {
 	Member functions
 */
 
-/*
-	function to convert a roman numeral to an arabic numeral
-	I = 1
-	V = 5
-	X = 10
-	L = 50
-	C = 100
-	D = 500
-	M = 1000
-*/
+//function to convert a roman numeral to an arabic numeral
 int RomanNumeral::to_arabic() {
-	// Initialize var
+	// arabic will store the converted number
 	int arabic;
 	arabic = 0;
-	//cout << "this -> roman_val.length() = " << this -> roman_val.length() << endl;
-	cout << "roman_val.length() = " << roman_val.length() << endl;
+
+	// unordered map for roman algarisms
+	unordered_map<char, int> roman_refs;
+
+	roman_refs['I'] = 1;
+	roman_refs['V'] = 5;
+	roman_refs['X'] = 10;
+	roman_refs['L'] = 50;
+	roman_refs['C'] = 100;
+	roman_refs['D'] = 500;
+	roman_refs['M'] = 1000;
+
 	// Iterate through each char
 	for (int i = 0; i < roman_val.length(); i++) {
-		cout << "roman_val[i] = " << roman_val[i] << endl;
-		if (roman_val[i] == 'I') {
-			arabic = arabic + 1;
-		} else if (roman_val[i] == 'V') {
-			arabic = arabic + 5;
-		} else if (roman_val[i] == 'X') {
-			arabic = arabic + 10;
-		} else if (roman_val[i] == 'L') {
-			arabic = arabic + 50;
-		} else if (roman_val[i] == 'C') {
-			arabic = arabic + 100;
-		} else if (roman_val[i] == 'D') {
-			arabic = arabic + 500;
-		} else if (roman_val[i] == 'M') {
-			arabic = arabic + 1000;
+		
+		// Fetch arabic value of current and next roman algarisms
+		int currentNumber;
+		currentNumber = roman_refs[roman_val[i]];
+		int nextNumber;
+		nextNumber = i+1 < roman_val.length() ? roman_refs[roman_val[i+1]] : 0;
+
+		// Decide between addition or subtraction rule
+		if (currentNumber >= nextNumber) {
+			arabic += currentNumber;
 		} else {
-			throw(roman_val[i]);
-		}
-	};
+			arabic -= currentNumber;
+		};
+
+	}
 
 	return arabic;
 };

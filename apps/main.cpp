@@ -1,4 +1,5 @@
 #include <RomanNumeral/RomanNumeral.hpp>
+#include <LeapYear/LeapYear.hpp>
 
 #include <fmt/format.h>
 
@@ -13,7 +14,7 @@ int main() {
         int arabic_ten = ten.to_arabic();
         int arabic_four = four.to_arabic();
         cout << endl << "X in arabic: " << arabic_ten << endl << endl;
-        cout << "IV in arabic: " << four.to_arabic() << endl << endl;
+        cout << "IV in arabic: " << arabic_four << endl << endl;
     } catch(string input) {
         cout << fmt::format("Invalid roman numeral: `{}`", input) << endl;
     };
