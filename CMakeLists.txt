@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.11...3.19)
 
 # Project name and a few useful settings. Other commands can pick up the results
 project(
-  ModernCMakeExample
+  CppAutomatedTesting
   VERSION 0.1
   DESCRIPTION "An example project with CMake"
   LANGUAGES CXX)

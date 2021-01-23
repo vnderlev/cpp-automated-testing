@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "functional": "cpp",
+        "ostream": "cpp",
+        "string_view": "cpp",
+        "regex": "cpp",
+        "valarray": "cpp",
+        "iostream": "cpp"
+    }
+}
